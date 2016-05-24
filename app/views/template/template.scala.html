@@ -1,0 +1,15 @@
+@(title: String)(headH: Html)(content: Html)
+<!-- タイトル,ヘッダ(HTML), body(HTML) -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>@title</title>
+	<link rel="stylesheet" href="@routes.Assets.versioned("/stylesheets/main.css")">
+	@headH
+</head>
+	<body>
+		@content
+	</body>
+</html>

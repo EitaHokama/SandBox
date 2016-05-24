@@ -1,0 +1,18 @@
+body{
+font-family:Helvetica;
+}
+
+nav {
+     float : left;
+     text-align :left;
+     width : 20%;
+     height : 100%;
+     background-color : #f99ff4;
+ }
+ section {
+     text-align : center;
+     float : right;
+     background-color : #66FF99;
+     width : 80%;
+    height :100%;
+ }

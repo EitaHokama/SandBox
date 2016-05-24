@@ -1,0 +1,28 @@
+@(title: String)(par: String)(headH: Html)(content: Html)
+@import views.html.template._
+
+<!-- 引数 タイトル,権限,ヘッダ追記内容,内容 -->
+@template(title){
+		@headH
+		<link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/sideMenu.css")">
+
+	}{
+		<nav>
+			<ul>
+			<a href="URL#ラベル"><li>感謝カード作成</li></a>
+			<li>掲示板</li>
+			<li>送信箱</li>
+			<li>受信箱</li>
+			<li>検索</li>
+			<li>事例の選択</li>
+			<li>査定</li>
+			<li>経営掲示板</li>
+			<li></li>
+			<li></li>
+			<li>ログアウト</li>
+			</ul>
+		</nav>
+		<section>
+			@content
+		</section>
+	}
