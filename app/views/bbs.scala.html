@@ -1,0 +1,70 @@
+<html lang="ja">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>HTML5</title>
+
+        <link rel="stylesheet" type="text/css" href="ml.css">
+    </head>
+
+    <body>
+        <header>
+            <p>header 部分</p>
+        </header>
+
+        <div  class="clearfix">
+            <nav>
+                <p>nav 部分</p>
+            </nav>
+
+        <section>
+        <h2>掲示板</h2>
+        <table border="1">
+        <tr>
+			<form name="selection">
+		<th><select name="date">
+				<option value="day">-- 日付 --
+				<option value="date">
+					<script>
+						//時刻データを取得して変数jikanに格納する
+						var jikan= new Date();
+						//月・日にちを取得する
+						var month = jikan.getMonth();
+						var date = jikan.getDate();
+						document.write(month+"月",+date+"日");
+					</script>
+		</th></select>
+		<th><select name="select">
+				<option value="category">-- カテゴリ --
+				<option value="debug">デバッグ
+		</th>
+			</select>
+		<th><select name="sender">
+				<option value="send">-- 送信者 --
+				<option value="debug">管理部　竹中
+		</th>
+			</select>
+		<th><select name="recipient">
+				<option value="res">-- 受信者 --
+				<option value="debug">開発部　佐藤
+		</th>
+			</select>
+		<th><input type="text" name="text1" value="件名" readonly></th>
+		<th><input type="text" name="text1" value="本文" readonly></th>
+		</tr>
+		<tr>
+		<td>5月24日</td>
+		<td>デバッグ</td>
+		<td>管理部　竹中</td>
+		<td>開発部　佐藤</td>
+		<td>デバックの件</td>
+		<td>ありがとうございました。</td>
+		</tr>
+		</form>
+            </section>
+        </table>
+        </div>
+        <footer>
+            <p>footer 部分</p>
+        </footer>
+    </body>
+</html>

@@ -19,4 +19,7 @@ public class HomeController extends Controller {
     public Result index() {
         return ok(index.render());
     }
+    public Result bbs() {
+    	return ok(bbs.render());
+    }
 }
