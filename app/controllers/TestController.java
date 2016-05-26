@@ -6,6 +6,7 @@ import models.Gratitude_Card;
 import models.Category;
 import play.mvc.*;
 import java.util.List;
+import java.util.ArrayList;
 
 import views.html.*;
 import play.data.Form;
@@ -20,8 +21,7 @@ import java.util.HashMap;
  */
 public class TestController extends Controller {
 
-	@Inject
-	private FormFactory formFactory;
+
 
     /**
      * An action that renders an HTML page with a welcome message.
@@ -29,6 +29,11 @@ public class TestController extends Controller {
      * this method will be called when the application receives a
      * <code>GET</code> request with a path of <code>/</code>.
      */
+
+	public List<Gratitude_Card> reGC(){
+		List<Gratitude_Card> gc = new ArrayList<Gratitude_Card>();
+		return gc;
+	}
 
 
     public Result test2(){
@@ -62,6 +67,7 @@ public class TestController extends Controller {
 
     	return ok(test2.render(gc, params.get("sender_department")[0]));
     }
+
 
     public Result makeJS(){
     	return ok(views.js.template.ichiran.render());
