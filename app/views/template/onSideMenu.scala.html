@@ -7,22 +7,25 @@
 		<link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/sideMenu.css")">
 
 	}{
-		<nav>
-			<ul>
-			<a href="URL#ラベル"><li>感謝カード作成</li></a>
-			<li>掲示板</li>
-			<li>送信箱</li>
-			<li>受信箱</li>
-			<li>検索</li>
-			<li>事例の選択</li>
-			<li>査定</li>
-			<li>経営掲示板</li>
-			<li></li>
-			<li></li>
-			<li>ログアウト</li>
-			</ul>
-		</nav>
+	<nav>
+     <div id="button-box">
+     <table class="sidemenu-table"  border="0" cellspacing="0" cellpadding="0">
+			<tr><td class="img-td"><img src="@routes.Assets.versioned("images/hito.png")" class="img-table"></td><td><input type="button" value="カード作成" id="button_submit"><br></td></tr>
+			<tr><td class="img-td"><img src="@routes.Assets.versioned("images/bbs.png")" class="img-table"></td><td><input type="button" value="掲示板" id="button_submit"></td></tr>
+	        <tr><td class="img-td"><img src="@routes.Assets.versioned("images/mail.png")" class="img-table"></td><td><input type="button" value="送信箱" id="button_submit"></td></tr>
+	        <tr><td class="img-td"><img src="@routes.Assets.versioned("images/mail.png")" class="img-table"></td><td><input type="button" value="受信箱" id="button_submit"></td></tr>
+	        <tr><td class="img-td"><img src="@routes.Assets.versioned("images/search.png")" class="img-table"></td><td><input type="button" value="検索" id="button_submit"></td></tr>
+			<tr><td class="img-td"><img src="@routes.Assets.versioned("images/sentaku.png")" class="img-table"></td><td><input type="button" value="事例の選択" id="button_submit"></td></tr>
+			<tr><td class="img-td"><img src="@routes.Assets.versioned("images/satei.png")" class="img-table"></td><td><input type="button" value="査定" id="button_submit"></td></tr>
+			<tr><td class="img-td"><img src="@routes.Assets.versioned("images/good.png")" class="img-table"></td><td><input type="button" value="ピックアップ" id="button_submit"></td></tr>
+			<tr><td class="img-td"><img src="@routes.Assets.versioned("images/bbs_detail.png")" class="img-table"></td><td><input type="button" value="経営掲示板" id="button_submit"></td></tr>
+			<tr><td class="img-td"><img src="@routes.Assets.versioned("images/logout.png")" class="img-table"></td><td><input type="button" value="ログアウト" id="button_submit"></td></tr>
+	 </table>
+      </div>
+	</nav>
+	<div =id"section_box">
 		<section>
-			@content
+
 		</section>
-	}
+	</div>
+}

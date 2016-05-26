@@ -15,5 +15,8 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 GET     /bbs                           controllers.HomeController.bbs
 
-GET		/test						controllers.HomeController.test()
+GET		/test						   controllers.HomeController.test()
 
+GET     /valuation					   controllers.HomeController.valuation()
+
+GET     /typical					   controllers.HomeController.typical()

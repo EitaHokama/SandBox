@@ -23,7 +23,16 @@ public class HomeController extends Controller {
         return ok(index.render());
     }
     public Result bbs() {
-    	return ok(bbs.render());
+    	//Employees emp = Employees.find.byId(1);
+    	Gratitude_Card gc = Gratitude_Card.find.byId(1);
+    	CaseStudy cs = CaseStudy.find.byId(1);
+    	return ok(bbs.render(gc,cs));
+    }
+    public Result valuation() {
+    	//Employees emp = Employees.find.byId(1);
+    	Gratitude_Card gc = Gratitude_Card.find.byId(1);
+    	CaseStudy cs = CaseStudy.find.byId(1);
+    	return ok(valuation.render(gc,cs));
     }
     public Result test(){
     	//Employees emp = Employees.find.byId(1);
@@ -31,5 +40,10 @@ public class HomeController extends Controller {
     	CaseStudy cs = CaseStudy.find.byId(1);
     	return ok(test.render(gc,cs));
     }
-
+    public Result typical(){
+    	//Employees emp = Employees.find.byId(1);
+    	Gratitude_Card gc = Gratitude_Card.find.byId(1);
+    	CaseStudy cs = CaseStudy.find.byId(1);
+    	return ok(typical.render(gc,cs));
+    }
 }
