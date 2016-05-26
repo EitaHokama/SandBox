@@ -86,4 +86,10 @@ margin: 0 auto;
 
 
 }
+.lock{
+ position: absolute;
+  top: 15%;
+  right:35%;
+
+}
 
