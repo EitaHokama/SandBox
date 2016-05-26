@@ -36,4 +36,9 @@ public class Employees extends Model {
 	@OneToMany(mappedBy="receiver_id")
 	public List<Gratitude_Card> receiver = new ArrayList<>();
 	public static Find<Integer,Employees> find = new Find<Integer,Employees>(){};
+
+	public static Boolean authenticate(String username, String password){
+		Employees employees = Employees.find.where().eq("name",username).findUnique();
+		return(user != null && employees.pass.equals(password));
+	}
 }

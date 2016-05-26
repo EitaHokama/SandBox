@@ -13,3 +13,9 @@ GET     /message                    controllers.AsyncController.message
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
 GET		/test						controllers.HomeController.test()
+GET     /test                       controllers.HomeController.createTest()
+
+GET		/login						controllers.AuthController.index
+POST    /login						controllers.AuthController.authenticate
+
+GET		/logout						controllers.AuthController.logout
