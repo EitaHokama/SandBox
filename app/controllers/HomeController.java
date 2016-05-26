@@ -30,4 +30,21 @@ public class HomeController extends Controller {
     	return ok(test.render(gc,cs));
     }
 
-}
+    public Result creation() {
+    	///DEPARTMENT DT = DEPARTMENT.find.byId(1);
+    	//CATEGORY CG = CATEGORY.find.byId(1);
+    	//return ok(test.render(gc,cs));
+    	return ok(creation.render());
+    }
+
+    public Result kanri() {
+        return ok(kanri.render());
+
+    }
+    public Result valuation_detailed() {
+        return ok(valuation_detailed.render());
+    }
+
+
+    }
+

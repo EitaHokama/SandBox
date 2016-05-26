@@ -13,3 +13,10 @@ GET     /message                    controllers.AsyncController.message
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
 GET		/test						controllers.HomeController.test()
+
+GET		/creation						controllers.HomeController.creation()
+
+GET		/kanri						controllers.HomeController.kanri()
+
+GET		/valuation_detailed			controllers.HomeController.valuation_detailed()
+
