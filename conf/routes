@@ -14,9 +14,16 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 GET		/test						controllers.HomeController.test()
 
+
 GET		/creation						controllers.HomeController.creation()
 
 GET		/kanri						controllers.HomeController.kanri()
 
 GET		/valuation_detailed			controllers.HomeController.valuation_detailed()
+
+
+GET		/trans						controllers.HomeController.trans()
+
+
+GET		/login						controllers.HomeController.login()
 
