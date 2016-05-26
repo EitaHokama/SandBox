@@ -40,7 +40,8 @@ th.category{
 
 }
 .card_title{
-	width:400px;
+	width:300px;
+
 
 }
 .category{
@@ -72,4 +73,8 @@ table.ichiran_index{
 
 table, td, th {
 border: 2px #ff0000 solid;
+}
+td.card_title{
+	text-align: left; overflow: hidden;
+}
 }
