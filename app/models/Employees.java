@@ -21,7 +21,7 @@ public class Employees extends Model {
 	public String name;
 	@ManyToOne
 	@Required
-	public Department depatrment_id;
+	public Department department_id;
 	@Required
 	public String login_id;
 	@Required

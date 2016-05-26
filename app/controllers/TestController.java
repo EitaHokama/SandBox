@@ -12,6 +12,7 @@ import play.data.Form;
 import play.data.FormFactory;
 import javax.inject.Inject;
 import java.util.Map;
+import java.util.HashMap;
 
 /**
  * This controller contains an action to handle HTTP requests
@@ -41,6 +42,7 @@ public class TestController extends Controller {
     	List<Gratitude_Card> gc ;
     	//Form<FindForm> f = new Form(FindForm.class).bindFromRequest();
     	Map<String, String[]> params =request().body().asFormUrlEncoded();
+    	SelectGC sel = new SelectGC(params);
 
 
 
@@ -52,12 +54,16 @@ public class TestController extends Controller {
     	}else{
     		gc = Gratitude_Card.find.all();
     	}
+    	gc = new SelectGC(params).find();
 
     			/*(Category.find.where().
     					eq("category_name", params.get("category")[0])
     					.findList().category_id));*/
 
-    	return ok(test2.render(gc, params.get("category")[0]));
+    	return ok(test2.render(gc, params.get("sender_department")[0]));
     }
 
+    public Result makeJS(){
+    	return ok(views.js.template.ichiran.render());
+    }
 }

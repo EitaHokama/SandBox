@@ -16,5 +16,6 @@ GET		/test						controllers.HomeController.test()
 
 GET		/test2						controllers.TestController.test2()
 POST	/test2						controllers.TestController.test2Post()
+GET		/ichiran/ichiran.js			controllers.TestController.makeJS()
 
 
