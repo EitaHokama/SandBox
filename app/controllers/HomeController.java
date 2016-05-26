@@ -44,15 +44,7 @@ public class HomeController extends Controller {
     public Result valuation_detailed() {
         return ok(valuation_detailed.render());
     }
-    public Result sanp() {
-        return ok(sanp.render());
-    }
 
-    public Result select_js(){
-    	return ok(views.js.selectEmp.select.render());
-    }
-    public Result sanpl2() {
-        return ok(sanpl2	.render());
-    }
+
     }
 
