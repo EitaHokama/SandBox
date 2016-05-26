@@ -66,4 +66,10 @@ public class TestController extends Controller {
     public Result makeJS(){
     	return ok(views.js.template.ichiran.render());
     }
+    public Result syousai(){
+    	Map<String, String[]> params =request().body().asFormUrlEncoded();
+    	int iD = Integer.valueOf(params.get("CardNumber")[0]);
+    	Gratitude_Card gc = Gratitude_Card.find.byId(iD);
+    	return ok(syousai.render(gc,"" +iD));
+    }
 }

@@ -5,6 +5,7 @@ import com.avaje.ebean.Model.Find;
 
 import play.data.validation.Constraints.Required;
 
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -42,4 +43,11 @@ public class Gratitude_Card extends Model {
 
 
 	public static Find<Integer,Gratitude_Card> find = new Find<Integer,Gratitude_Card>(){};
+
+	public List<String> split(){
+
+		List<String> spr = Arrays.asList(card_content.split("\n",0));
+
+		return spr;
+	}
 }

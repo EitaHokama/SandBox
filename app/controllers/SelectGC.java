@@ -78,7 +78,7 @@ public class SelectGC {
 
 	private List<Gratitude_Card> sortDate(ExpressionList<Gratitude_Card> gc){
 
-		return gc.orderBy("date ASC").findList();
+		return gc.orderBy("date DESC").findList();
 	}
 
 	private ExpressionList<Gratitude_Card> findCategory(ExpressionList<Gratitude_Card> gc){
@@ -161,5 +161,6 @@ public class SelectGC {
 
 
 	}
+
 
 }
