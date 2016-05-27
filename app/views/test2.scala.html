@@ -1,4 +1,4 @@
-@(gc : List[Gratitude_Card])(par : String)
+@(gc : List[Gratitude_Card])(par : String)(pos : Map[String,Array[String]])
 @import views.html.template._
 
 @onSideMenu("テスト")(""){
@@ -8,5 +8,5 @@
 	<div class= "ichiran_width">
 
 	<form name="selectForm" action="@routes.TestController.test2Post()" method="POST">
-		@ichiran(gc)(par)( "送信部署" :: "送信者" ::"受信部署" :: "受信者" :: "日付" :: "カテゴリ" :: "タイトル" :: Nil)
+		@ichiran(gc)(par)("日付範囲" :: "送信部署" :: "送信者" ::"受信部署" :: "受信者" :: "日付" :: "カテゴリ" :: "タイトル" :: Nil)(pos)
 	}

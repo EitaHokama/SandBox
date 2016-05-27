@@ -34,6 +34,7 @@ public class SelectGC {
 			put("date", "日付");
 			put("title", "タイトル");
 			put("category", "カテゴリ");
+			put("date_range","日付範囲");
 		}
 	};
 
