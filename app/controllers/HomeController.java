@@ -25,7 +25,19 @@ public class HomeController extends Controller {
      * <code>GET</code> request with a path of <code>/</code>.
      */
     public Result index() {
-        return ok(index.render("Your new application is ready."));
+        return ok(index.render());
+    }
+    public Result bbs() {
+    	//Employees emp = Employees.find.byId(1);
+    	Gratitude_Card gc = Gratitude_Card.find.byId(1);
+    	CaseStudy cs = CaseStudy.find.byId(1);
+    	return ok(bbs.render(gc,cs));
+    }
+    public Result valuation() {
+    	//Employees emp = Employees.find.byId(1);
+    	Gratitude_Card gc = Gratitude_Card.find.byId(1);
+    	CaseStudy cs = CaseStudy.find.byId(1);
+    	return ok(valuation.render(gc,cs));
     }
 
     public Result test(){
@@ -34,6 +46,36 @@ public class HomeController extends Controller {
     			Gratitude_Card.find.where().orderBy("date DESC").findList();
     	CaseStudy cs = CaseStudy.find.byId(1);
     	return ok(test.render(gc,cs));
+    }
+    public Result trans(){
+    	//Employees emp = Employees.find.byId(1);
+    	Gratitude_Card gc = Gratitude_Card.find.byId(1);
+    	CaseStudy cs = CaseStudy.find.byId(1);
+    	return ok(trans.render());
+    }
+    public Result login(){
+    	return ok(login.render());
+    }
+    public Result typical(){
+    	//Employees emp = Employees.find.byId(1);
+    	Gratitude_Card gc = Gratitude_Card.find.byId(1);
+    	CaseStudy cs = CaseStudy.find.byId(1);
+    	return ok(typical.render(gc,cs));
+    }
+
+    public Result creation() {
+    	///DEPARTMENT DT = DEPARTMENT.find.byId(1);
+    	//CATEGORY CG = CATEGORY.find.byId(1);
+    	//return ok(test.render(gc,cs));
+    	return ok(creation.render());
+    }
+
+    public Result kanri() {
+        return ok(kanri.render());
+
+    }
+    public Result valuation_detailed() {
+        return ok(valuation_detailed.render());
     }
 
     public Result createTest(){
@@ -44,7 +86,5 @@ public class HomeController extends Controller {
     	return redirect(routes.HomeController.test());
     }
 
-    public Result login(){
-    	     	return ok(login.render());
-    }
 }
+

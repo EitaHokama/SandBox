@@ -6,7 +6,7 @@ background: #29454d;
 font-family: Verdana;
 padding:20px;
 position: absolute;
-/*窶吮ﾂ心窶堙俄｢\ﾅｽﾂｦ*/
+/*中心に表示*/
 top: 0;
 left: 0;
 right: 0;
@@ -14,7 +14,7 @@ bottom: 0;
 margin: auto;
 width: 400px;
 height: 460px;
-/*窶吮ﾂ心窶堙俄｢\ﾅｽﾂｦ*/
+/*中心に表示*/
    }
 
 .submit-button {
@@ -84,5 +84,11 @@ margin: 0 auto;
   width: 200px;
    background-color:  #29454d;
 
+
+}
+.lock{
+ position: absolute;
+  top: 15%;
+  right:35%;
 
 }
