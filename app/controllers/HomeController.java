@@ -90,10 +90,8 @@ public class HomeController extends Controller {
     	List<Gratitude_Card> gc ;
 
     	Map<String, String[]> params =request().body().asFormUrlEncoded();
-    	String[] str = {"社員1"};
-    	params.put("sender", str);//仮に社員1をセット　実運用では、セッションから名前を取得
     	SelectGC sel = new SelectGC(params);
-    	gc = sel.find();
+    	gc = sel.findRec(Employees.find.byId(1));//Employeesクラスを代入
 
     	return ok(receive.render(gc, "",params));
     }
@@ -101,11 +99,8 @@ public class HomeController extends Controller {
     	List<Gratitude_Card> gc ;
     	Map<String, String[]> params =new HashMap<String, String[]>();
 
-    	String[] str = {"社員1"};
-    	params.put("sender", str);//仮に社員1をセット　実運用では、セッションから名前を取得
-
     	SelectGC sel = new SelectGC(params);
-    	gc = sel.find();
+    	gc = sel.findRec(Employees.find.byId(1));//Employeesクラスを代入
 
     	return ok(receive.render(gc, "",params));
     }

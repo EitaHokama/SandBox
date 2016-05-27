@@ -1,22 +1,15 @@
 package controllers;
 
-import models.CaseStudy;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.avaje.ebean.Ebean;
+import com.avaje.ebean.ExpressionList;
+
+import models.Category;
 import models.Employees;
 import models.Gratitude_Card;
-import models.Category;
-import models.Department;
-import play.mvc.*;
-import java.util.List;
-
-import views.html.*;
-import play.data.Form;
-import play.data.FormFactory;
-import javax.inject.Inject;
-import java.util.Map;
-import java.util.HashMap;
-import com.avaje.ebean.ExpressionList;
-import com.avaje.ebean.Query;
-import com.avaje.ebean.Ebean;
 
 /**
  * params 検索に使用するパラメーターを格納(検索前に必ずnewで初期化すること)
@@ -44,7 +37,7 @@ public class SelectGC {
 
 	public List<Gratitude_Card> find(){
 		List<Gratitude_Card> gc;
-		ExpressionList<Gratitude_Card> gcWhere = Gratitude_Card.find.where();
+		ExpressionList<Gratitude_Card> gcWhere;
 
 
 		/*Query<> cat = Category.find.where().eq("category_name",params.get("category")[0]).findList();
@@ -59,6 +52,48 @@ public class SelectGC {
 		//gc= Gratitude_Card.find.all();
 
 		//gc = sortDate(Gratitude_Card.find.all());
+		gcWhere=makeWhere();
+		gcWhere=findCategory(gcWhere);
+		gcWhere=findDepartment(gcWhere,"send");//send or rec
+		gcWhere=findDepartment(gcWhere,"rec");
+		gcWhere=findEmployees(gcWhere,"send");
+		gcWhere=findEmployees(gcWhere,"rec");
+		gc= Gratitude_Card.find.all();
+		//com.avaje.ebean.bean.BeanCollection=sortDate(gcWhere);
+		//gc=
+		sortDate(gcWhere);
+
+		return gc;
+	}
+	public List<Gratitude_Card> findRec(Employees emp){
+		List<Gratitude_Card> gc;
+		ExpressionList<Gratitude_Card> gcWhere;
+
+		gcWhere=makeWhere();
+		gcWhere=findCategory(gcWhere);
+		gcWhere=findDepartment(gcWhere,"send");//send or rec
+		gcWhere=findEmployees(gcWhere,"send");
+		gcWhere=gcWhere.eq("receiver_id.name" , emp.name);
+		gc=sortDate(gcWhere);
+
+		return gc;
+	}
+	public List<Gratitude_Card> findSend(Employees emp){
+		List<Gratitude_Card> gc;
+		ExpressionList<Gratitude_Card> gcWhere;
+
+		gcWhere=makeWhere();
+		gcWhere=findCategory(gcWhere);
+		gcWhere=findDepartment(gcWhere,"rec");//send or rec
+		gcWhere=findEmployees(gcWhere,"rec");
+		gcWhere=gcWhere.eq("sender_id.name" , emp.name);
+		gc=sortDate(gcWhere);
+
+		return gc;
+	}
+
+	private ExpressionList<Gratitude_Card> makeWhere(){
+		ExpressionList<Gratitude_Card> gcWhere = Gratitude_Card.find.where();
 		gcWhere=
 				Ebean
 				.find(Gratitude_Card.class)
@@ -66,15 +101,10 @@ public class SelectGC {
 						.fetch("sender_id.department_id")
 					.fetch("receiver_id")
 						.fetch("receiver_id.department_id")
+					.fetch("category_id")
+					.fetch("cs")
 				.where();
-		gcWhere=findCategory(gcWhere);
-		gcWhere=findDepartment(gcWhere,"send");//send or rec
-		gcWhere=findDepartment(gcWhere,"rec");
-		gcWhere=findEmployees(gcWhere,"send");
-		gcWhere=findEmployees(gcWhere,"rec");
-		gc=sortDate(gcWhere);
-
-		return gc;
+		return gcWhere;
 	}
 
 	public List<Gratitude_Card> sortDate(ExpressionList<Gratitude_Card> gc){

@@ -39,7 +39,7 @@ public class Gratitude_Card extends Model {
 	public Category category_id;
 
 	@ManyToMany
-	public List<CaseStudy> cs= new ArrayList();
+	public List<CaseStudy> cs;
 
 
 	public static Find<Integer,Gratitude_Card> find = new Find<Integer,Gratitude_Card>(){};
