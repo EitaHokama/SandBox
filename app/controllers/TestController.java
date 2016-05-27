@@ -39,6 +39,8 @@ public class TestController extends Controller {
     public Result test2(){
     	List<Gratitude_Card> gc = Gratitude_Card.find.all();
 
+    	gc= new SelectGC(new HashMap<String, String[]>()).find();
+
     	return ok(test2.render(gc, "", new HashMap<String, String[]>()));
     }
     public Result test2Post(){
@@ -61,9 +63,9 @@ public class TestController extends Controller {
     	Gratitude_Card gc = Gratitude_Card.find.byId(iD);
     	return ok(syousai.render(gc,"" +iD));
     }
-    
+
     public Result syousaiGet(){
-    	
+
     	return ok(syousaiNot.render());
     }
 }
