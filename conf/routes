@@ -12,6 +12,9 @@ GET     /message                    controllers.AsyncController.message
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
+
+GET     /bbs                           controllers.HomeController.bbs
+
 GET		/test						controllers.HomeController.test()
 
 
@@ -27,3 +30,6 @@ GET		/trans						controllers.HomeController.trans()
 
 GET		/login						controllers.HomeController.login()
 
+GET     /valuation					   controllers.HomeController.valuation()
+
+GET     /typical					   controllers.HomeController.typical()
