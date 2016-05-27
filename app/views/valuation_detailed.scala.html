@@ -2,18 +2,35 @@
 
 @template("査定詳細画面"){
 	}{
+<link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/valuation.css")">
 
 <table border ="1">
                    <tr><td><label for="name">対象者:</label></td><td><label for="name">石川次郎</label></td></tr>
                    <tr><td><label for="name">社員ＩＤ：</label></td><td><label for="name"></label></td></tr>
 </table>
-					<h1>査定詳細</h1></Div>
+					<h1>査定詳細</h1>
 
 					<form action="conf.php" method="post">
 					<dl>
                          <form action="cgi-bin/formmail.cgi" method="post">
-
-<table border ="1">
+<table border="1" id="table_table">
+<tr>
+<td>
+<table border ="1" id="table_busyo">
+<tr><td></td>   <td> <label for="name">送信部署</label></td></tr>
+<tr><td><label for="name">検索</label></td>
+                         <td>
+                         <select name="送信部署">
+                         <option selected="selected"></option>
+                         <option value="開発部" >開発部</option>
+                         <option value="営業部">営業部</option>
+                         <option value="人事部">人事部</option>
+                         <option value="その他">その他</option>
+                         </select></td>
+     </table>
+</td>
+<td>
+<table border ="1" id="table_day">
                         <p>
                           <tr>
                           <td>
@@ -52,7 +69,10 @@
 </tr>
 
 </table>
-<table border ="1">
+</td>
+
+<td>
+<table border ="1" id="table_category">
 <tr>
     <td>                    <label for="name">カテゴリ</label></td>
 <td>
@@ -65,24 +85,10 @@
                          </select></td>
 </tr>
 </table>
-
-
-
-<table border ="1">
-<tr><td></td>   <td> <label for="name">送信部署</label></td></tr>
-<tr><td><label for="name">検索</label></td>
-                         <td>
-                         <select name="送信部署">
-                         <option selected="selected"></option>
-                         <option value="開発部" >開発部</option>
-                         <option value="営業部">営業部</option>
-                         <option value="人事部">人事部</option>
-                         <option value="その他">その他</option>
-                         </select></td>
-     </table>
                           </form>
-
-
+                          </td>
+</tr>
+</table>
 
 
 
