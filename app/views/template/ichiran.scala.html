@@ -10,7 +10,8 @@
 　部署、送信者、カテゴリ　絞り込み-->
 
 																			@{/*              日付                       */}
-		<div class="select_date">
+		<div class="select_date" style="text-align: right;">
+		日時指定　　　　<br>
 		@for(str <- show){
 			@if(str == SelectGC.name.get("date_range")){
 					@if(pos.containsKey("start_date")){
@@ -140,7 +141,8 @@
 
 </div>
 <br>
+<div style="text-align: center;">
 <iframe  name="iframe" src="@routes.TestController.syousaiGet()"></iframe>
-
+</div>
 
 
