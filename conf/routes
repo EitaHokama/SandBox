@@ -28,8 +28,16 @@ GET		/valuation_detailed			controllers.HomeController.valuation_detailed()
 GET		/trans						controllers.HomeController.trans()
 
 
-GET		/login						controllers.HomeController.login()
+# GET		/login						controllers.HomeController.login()
 
 GET     /valuation					   controllers.HomeController.valuation()
 
 GET     /typical					   controllers.HomeController.typical()
+
+GET     /test                       controllers.HomeController.createTest()
+
+GET		/login						controllers.AuthController.index
+POST    /login						controllers.AuthController.authenticate
+
+GET		/logout						controllers.AuthController.logout
+
