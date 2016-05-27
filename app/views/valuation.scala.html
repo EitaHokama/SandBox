@@ -27,7 +27,7 @@
 
 		<!-- 所属 -->
 			<td><select name="sel_bunruiA" onChange="selectBunruiA(this)">
-			<option>-- 所属 --</option>
+			<option value="affiliation">-- 所属 --
 				@for(b <- busyo){
 				<option> @b.department_name </option>
 				}
@@ -37,15 +37,14 @@
 		<!-- 社員名 -->
 			<td>
 			<select name="sel_bunruiB">
-			<option>-- 社員名 --</option>
+			<option value="employee">-- 社員名 --
 					 @for(em <- emp){
 					   	<option> @em.name </option>
                       }
 
 			</select>
 
-		<!-- 日付 -->
-
+		<!-- 日付（カレンダー表示） -->
 			<td><input type="date" name="date" placeholder="2016-01-01"></td>
 			<td>～</td>
 			<td><input type="date" name="date" placeholder="2016-01-01"></td>
@@ -93,6 +92,8 @@
 		</table>
 	</form>
 
+
+<!-- Javaスクリプト -->
 	<script type="text/javascript" language="JavaScript">
 
     //最初の分類リスト (分類Aリスト)を定義

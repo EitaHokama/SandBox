@@ -33,7 +33,7 @@
 		<!-- 送信部署 -->
 			<td>
 				<select name="select">
-					<option value="category">-- 送信部署 --
+					<option value="send_div">-- 送信部署 --
 					@for(b <- busyo){
 						<option> @b.department_name </option>
 					}
@@ -42,7 +42,7 @@
 		<!-- 受信部署 -->
 			<td>
 				<select name="select">
-					<option value="category">-- 受信部署 --
+					<option value="res_div">-- 受信部署 --
 					@for(b <- busyo){
 						<option> @b.department_name </option>
 					}
@@ -69,7 +69,7 @@
 		<!-- 選択 -->
 			<td>
 				<select name="select">
-					<option value="category">全て
+					<option value="all">全て
 				</select>
 			</td>
 		</tr>
