@@ -41,3 +41,11 @@ POST    /login						controllers.AuthController.authenticate
 
 GET		/logout						controllers.AuthController.logout
 
+GET		/test2						controllers.TestController.test2()
+POST	/test2						controllers.TestController.test2Post()
+GET		/ichiran/ichiran.js			controllers.TestController.makeJS()
+GET		/ichiran/syousai			controllers.TestController.syousaiGet()
+POST	/ichiran/syousai			controllers.TestController.syousai()
+
+
+
