@@ -6,6 +6,9 @@ import models.Login;
 import play.data.Form;
 import play.data.FormFactory;
 import views.html.authentication.*;
+import java.util.List;
+import models.Employees;
+import models.Administrators;
 
 public class AuthController extends Controller{
 	@Inject
@@ -15,8 +18,11 @@ public class AuthController extends Controller{
 		if(session("login") != null){
 			return ok("あなたは既に " + session("login") + " としてログインしています");
 		}
+		List<Employees> emp = Employees.find.all();
 		return ok(index.render(formFactory.form(Login.class)));
+
 	}
+
 
 	public Result authenticate(){
 

@@ -23,6 +23,7 @@ public class Login{
 		return "Invalid username and password";
 	}
 	private Boolean authenticate(String username,String password){
-		return(username.equals("gongo") && password.equals("pizza"));
+		return Employees.authenticate(username, password);
+
 	}
 }
