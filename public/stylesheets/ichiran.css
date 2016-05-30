@@ -22,31 +22,33 @@ th.category{
 }
 .sender_department{
 	width:120px;
-
+text-align: center;
 }
 .sender{
+	text-align: center;
 	width:100px;
 }
 .receiver_department{
+	text-align: center;
 	width:120px;
 
 }
 .receiver{
 	width:100px;
-
+text-align: center;
 }
 .date{
 	width:120px;
-
+text-align: center;
 }
 .card_title{
 	width:300px;
-
+text-align: center;
 
 }
 .category{
 	width:80px;
-
+text-align: center;
 }
 .ichiran_width{
 	width: 95%;
@@ -63,7 +65,7 @@ table.ichiran_index{
 	text-align: left;
 }
 .ichiran_contents{
-	height:300px; background-color:#eeeeee; overflow:scroll;
+	height:300px; background-color:#eeeeee; overflow-y:scroll;
 	margin: 0 auto;
 }
 .syousai_contents{
@@ -79,10 +81,18 @@ iframe{
 	text-align: cneter;
 }
 
-table, td, th {
-border: 2px #ff0000 solid;
-}
+
 td.card_title{
-	text-align: left; overflow: hidden;
+text-align: cneter; overflow: hidden;
 }
+/*äpÇÃä€Ç¢ê¸*/
+.line{
+border: solid 4px #808080;
+ margin-left: auto;
+ margin-right: auto;
+-webkit-border-radius: 5px;
+-moz-border-radius:5px;
+border-radius:5px;
+width:95%;
 }
+
