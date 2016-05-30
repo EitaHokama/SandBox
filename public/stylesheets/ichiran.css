@@ -87,7 +87,7 @@ text-align: cneter; overflow: hidden;
 }
 /*Šp‚ÌŠÛ‚¢ü*/
 .line{
-border: solid 4px #808080;
+border: solid 4px;
  margin-left: auto;
  margin-right: auto;
 -webkit-border-radius: 5px;
