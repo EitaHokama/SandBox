@@ -58,10 +58,8 @@ public class SelectGC {
 		gcWhere=findDepartment(gcWhere,"rec");
 		gcWhere=findEmployees(gcWhere,"send");
 		gcWhere=findEmployees(gcWhere,"rec");
-		gc= Gratitude_Card.find.all();
-		//com.avaje.ebean.bean.BeanCollection=sortDate(gcWhere);
-		//gc=
-		sortDate(gcWhere);
+
+		gc=sortDate(gcWhere);
 
 		return gc;
 	}
