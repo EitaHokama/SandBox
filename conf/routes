@@ -25,7 +25,8 @@ GET		/kanri						controllers.HomeController.kanri()
 GET		/valuation_detailed			controllers.HomeController.valuation_detailed()
 
 
-GET		/trans						controllers.HomeController.trans()
+POST    /trans					    controllers.HomeController.trans()
+GET	    /trans					    controllers.HomeController.transGet()
 POST    /receive					controllers.HomeController.receive()
 GET	    /receive					controllers.HomeController.receiveGet()
 

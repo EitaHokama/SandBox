@@ -48,12 +48,7 @@ public class HomeController extends Controller {
     	CaseStudy cs = CaseStudy.find.byId(1);
     	return ok(test.render(gc,cs));
     }
-    public Result trans(){
-    	//Employees emp = Employees.find.byId(1);
-    	Gratitude_Card gc = Gratitude_Card.find.byId(1);
-    	CaseStudy cs = CaseStudy.find.byId(1);
-    	return ok(trans.render());
-    }
+
     public Result login(){
     	return ok(login.render());
     }
@@ -91,7 +86,7 @@ public class HomeController extends Controller {
 
     	Map<String, String[]> params =request().body().asFormUrlEncoded();
     	SelectGC sel = new SelectGC(params);
-    	gc = sel.findRec(Employees.find.byId(1));//Employeesクラスを代入
+    	gc = sel.findRec(Employees.find.byId(1));//Employeesクラスを代入・現在は社員1でログインしていると仮定
 
     	return ok(receive.render(gc, "",params));
     }
@@ -100,9 +95,27 @@ public class HomeController extends Controller {
     	Map<String, String[]> params =new HashMap<String, String[]>();
 
     	SelectGC sel = new SelectGC(params);
-    	gc = sel.findRec(Employees.find.byId(1));//Employeesクラスを代入
+    	gc = sel.findRec(Employees.find.byId(1));//Employeesクラスを代入・現在は社員1でログインしていると仮定
 
     	return ok(receive.render(gc, "",params));
+    }
+    public Result trans(){
+    	List<Gratitude_Card> gc ;
+
+    	Map<String, String[]> params =request().body().asFormUrlEncoded();
+    	SelectGC sel = new SelectGC(params);
+    	gc = sel.findSend(Employees.find.byId(1));//Employeesクラスを代入・現在は社員1でログインしていると仮定
+
+    	return ok(trans.render(gc, "",params));
+    }
+    public Result transGet(){
+    	List<Gratitude_Card> gc ;
+    	Map<String, String[]> params =new HashMap<String, String[]>();
+
+    	SelectGC sel = new SelectGC(params);
+    	gc = sel.findSend(Employees.find.byId(1));//Employeesクラスを代入・現在は社員1でログインしていると仮定
+
+    	return ok(trans.render(gc, "",params));
     }
 }
 

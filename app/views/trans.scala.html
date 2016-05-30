@@ -1,21 +1,12 @@
-
+@(gc : List[Gratitude_Card])(par : String)(pos : Map[String,Array[String]])
 @import views.html.template._
 
-@onSideMenu("送信者BOX")(""){
+@onSideMenu("テスト")(""){
+	<link rel="stylesheet" href="@routes.Assets.versioned("/stylesheets/ichiran.css")">
+
 	}{
+	<div class= "ichiran_width">
 
+	<form name="selectForm" action="@routes.HomeController.trans()" method="POST">
+		@ichiran(gc)(par)("受信部署" :: "受信者" :: "日付" :: "カテゴリ" :: "タイトル" :: Nil)(pos)
 	}
-
-<html>
-
- <head>
-
- </head>
-
- <body>
- <section>
-ここに記述していきます
-  </section>
- </body>
-
-</html>
