@@ -87,7 +87,7 @@ text-align: cneter; overflow: hidden;
 }
 /*Šp‚ÌŠÛ‚¢ü*/
 .line{
-border: solid 4px;
+
  margin-left: auto;
  margin-right: auto;
 -webkit-border-radius: 5px;
@@ -95,4 +95,9 @@ border: solid 4px;
 border-radius:5px;
 width:95%;
 }
-
+/*ƒJ[ƒh‚ğŒ„ŠÔ‚È‚­•À‚×‚é*/
+.ichiran_table{
+boder:none;
+border-collapse: collapse;
+border-spacing: 0;
+}
