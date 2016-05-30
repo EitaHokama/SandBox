@@ -42,8 +42,13 @@ public class AuthController extends Controller{
 			return test.test2();
 			}
 
-			HomeController home = new HomeController();
-			return home.test();
+			if(per.equals("人事")){
+			HomeController zin = new HomeController();
+			return zin.test();
+			}
+
+			HomeController kei = new HomeController();
+			return kei.bbs();
 		}
 	}
 
