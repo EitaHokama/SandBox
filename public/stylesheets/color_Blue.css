@@ -1,0 +1,11 @@
+/**********sideMenu‚ÌF***********/
+section {
+background-color:#ffffff;
+ }
+#button-box input#button_submit {
+background:#8eb4d9;
+color:#ffffff;
+}
+#button-box input#button_submit:hover{
+background:#487ca3;
+}
