@@ -5,17 +5,20 @@
 
 @busyo = @{models.Department.find.all()}
 
-
+<link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/creation.css")">
 @template("感謝カード作成画面"){
 	}{
 
 
-
+					<div class="body_creation">
+					<table class="table_creation">
 					<h1>感謝カード作成画面</h1>
+
+					<table class="line"></table>
 					<form name="form1" method="get" onsubmit="gettext(this)">
 					<dl>
                          <form action="cgi-bin/formmail.cgi" method="post">
-                         <p>　　　　　　　　　カテゴリ
+                         <p>カテゴリ
                          <select name="カテゴリ">
                          <option selected="selected"></option>
                          @for(ct <- cat){
@@ -24,7 +27,7 @@
                          </select></p>
                           </form>
 
-                        <p><label for="name">送る相手の部署</label>　　　　　　　部署
+                        <p><label for="name">送る相手の部署</label>
                          <select name="sel_bunruiA" onChange="selectBunruiA(this)">
                          <option value="">部署</option>
                          </select>
@@ -44,6 +47,8 @@
 
                      <input type="submit" id="submit" value="送信">
                      </form>
+                     </table>
+</div>
 
 	}
 	<script type="text/javascript" language="JavaScript">
