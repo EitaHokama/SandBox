@@ -1,5 +1,9 @@
 package controllers;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,6 +62,8 @@ public class SelectGC {
 		gcWhere=findDepartment(gcWhere,"rec");
 		gcWhere=findEmployees(gcWhere,"send");
 		gcWhere=findEmployees(gcWhere,"rec");
+		gcWhere=startDate(gcWhere);
+		gcWhere=endDate(gcWhere);
 
 		gc=sortDate(gcWhere);
 
@@ -109,10 +115,7 @@ public class SelectGC {
 
 		return gc.orderBy("date DESC").findList();
 	}
-	public List<Gratitude_Card> sortDate(List<Gratitude_Card> gc){
 
-		return Gratitude_Card.find.orderBy("date DESC").findList();
-	}
 
 	private ExpressionList<Gratitude_Card> findCategory(ExpressionList<Gratitude_Card> gc){
 		String buf;
@@ -195,5 +198,48 @@ public class SelectGC {
 
 	}
 
+	private ExpressionList<Gratitude_Card> startDate(ExpressionList<Gratitude_Card> gc){
+		String buf;
+		ExpressionList<Gratitude_Card> st;
+		if(params.get("start_date") ==null){
+			return gc;
+		}
+		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			Date d = f.parse(params.get("start_date")[0]);
 
+			 st= gc.ge("date", d);
+
+		} catch (ParseException e) {
+			// TODO 自動生成された catch ブロック
+			//e.printStackTrace();
+			return gc;
+		}
+
+		return st;
+	}
+	private ExpressionList<Gratitude_Card> endDate(ExpressionList<Gratitude_Card> gc){
+		String buf;
+		ExpressionList<Gratitude_Card> st;
+		if(params.get("start_date") ==null){
+			return gc;
+		}
+		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			Date d = f.parse(params.get("end_date")[0]);
+			Calendar c =Calendar.getInstance();
+			c.setTime(d);
+			c.add(Calendar.DATE,1);
+			d= c.getTime();
+
+			 st= gc.lt("date", d);
+
+		} catch (ParseException e) {
+			// TODO 自動生成された catch ブロック
+			//e.printStackTrace();
+			return gc;
+		}
+
+		return st;
+	}
 }

@@ -39,7 +39,7 @@ public class TestController extends Controller {
     public Result test2(){
     	List<Gratitude_Card> gc = Gratitude_Card.find.all();
 
-    	gc= new SelectGC(new HashMap<String, String[]>()).sortDate(gc);
+    	gc= new SelectGC(new HashMap<String, String[]>()).find();
 
     	return ok(test2.render(gc, "", new HashMap<String, String[]>()));
     }
@@ -50,7 +50,7 @@ public class TestController extends Controller {
     	SelectGC sel = new SelectGC(params);
     	gc = sel.find();
 
-    	return ok(test2.render(gc, params.get("sender_department")[0],params));
+    	return ok(test2.render(gc, params.get("start_date")[0],params));
     }
 
 
