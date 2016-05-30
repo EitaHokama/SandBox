@@ -2,6 +2,7 @@ package models;
 
 import com.avaje.ebean.Model;
 import com.avaje.ebean.Model.Find;
+import com.avaje.ebean.common.BeanList;
 
 import play.data.validation.Constraints.Required;
 
@@ -39,7 +40,7 @@ public class Gratitude_Card extends Model {
 	public Category category_id;
 
 	@ManyToMany
-	public List<CaseStudy> cs;
+	public List<CaseStudy> cs = new BeanList<>();
 
 
 	public static Find<Integer,Gratitude_Card> find = new Find<Integer,Gratitude_Card>(){};

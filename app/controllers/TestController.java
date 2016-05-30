@@ -39,7 +39,8 @@ public class TestController extends Controller {
     public Result test2(){
     	List<Gratitude_Card> gc = Gratitude_Card.find.all();
 
-    	gc= new SelectGC(new HashMap<String, String[]>()).find();
+    	//gc= new SelectGC(new HashMap<String, String[]>()).find();
+    	gc= Gratitude_Card.find.all();
 
     	return ok(test2.render(gc, "", new HashMap<String, String[]>()));
     }
@@ -48,6 +49,7 @@ public class TestController extends Controller {
 
     	Map<String, String[]> params =request().body().asFormUrlEncoded();
     	SelectGC sel = new SelectGC(params);
+    	sel.controlCS();
     	gc = sel.find();
 
     	return ok(test2.render(gc, params.get("start_date")[0],params));

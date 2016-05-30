@@ -20,6 +20,9 @@ th.card_title{
 th.category{
 	margin: 0 auto;
 }
+th.pickup{
+	margin: 0 auto;
+}
 .sender_department{
 	width:120px;
 
@@ -47,6 +50,9 @@ th.category{
 .category{
 	width:80px;
 
+}
+.pickup{
+	width:80px;
 }
 .ichiran_width{
 	width: 95%;

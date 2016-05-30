@@ -1,9 +1,14 @@
 @(gc: List[Gratitude_Card])(par: String)(show: List[String])(pos : Map[String,Array[String]])
 @import views.html.template._
 @import models._
+@import java.util.Date;
+@import java.util.Calendar;
 
 @sdf= @{new java.text.SimpleDateFormat("YYYY/MM/dd")}
 @range = @{Range(0, gc.size)}
+@c = @{Calendar.getInstance()}
+@{c.setTime(new Date())}
+@nowCS = @{CaseStudy.find.where().eq("year",c.get(Calendar.YEAR)).eq("month",c.get(Calendar.MONTH)+1).findUnique()}
 
 
 <!-- gc ソート、絞り込み済み感謝カードリスト　par 権限 show　一覧表示項目(左から) -->
@@ -106,9 +111,35 @@
 						}else{@if(str == SelectGC.name.get("receiver")){
 							<th class="receiver"><select name="receiver" onChange="this.form.submit()" />
 							<option>@SelectGC.name.get("receiver")</option>
-								@for(emp <- Employees.find.all()){
-									<option>@emp.name</option>
+								@if(pos.containsKey("receiver_department") && (pos.get("receiver_department")(0) != SelectGC.name.get("receiver_department"))){
+								@for(dep <- Department.find.all()){
+									@if(dep.department_name == pos.get("receiver_department")(0)){
+									<optgroup label="@dep.department_name">
+										@for(emp <- Employees.find.where().eq("department_id", dep).findList()){
+											@if(emp.name == pos.get("receiver")(0)){
+												<option selected>@emp.name</option>
+											}else{
+												<option>@emp.name</option>
+											}
+										}
+									</optgroup>
+									}
+
 								}
+							}else{
+								@for(dep <- Department.find.all()){
+									<optgroup label="@dep.department_name">
+										@for(emp <- Employees.find.where().eq("department_id", dep).findList()){
+											@if(emp.name == pos.get("receiver")(0)){
+												<option selected>@emp.name</option>
+											}else{
+												<option>@emp.name</option>
+											}
+										}
+									</optgroup>
+
+								}
+							}
 							</select></th>
 						}else{@if(str == SelectGC.name.get("date")){
 							<th class="date">@SelectGC.name.get("date")</th>
@@ -132,17 +163,35 @@
 								}
 
 							</select></th>
-						}}}}}}}
+						}else{@if(str == "ピックアップ"){
+							<th class="pickup"><select name="pickup" onChange="this.form.submit()" />
+							<option >すぺて</option>
+								@if(pos.containsKey("pickup")){
+									@for(pick <- "選択" :: "非選択":: Nil){<!-- teset -->
+										@if(pick == pos.get("pickup")(0)){
+											<option selected>@pick</option>
+										}else{
+											<option>@pick</option>
+										}
+									}
+								}else{
+											<option>選択</option>
+											<option>非選択</option>
+								}
+
+							</select></th>
+						}}}}}}}}
 					}
-			<th><input type="submit" value="検索" /></th>
+			<th><input type="submit" value="更新" /></th>
 			</tr>
 		</table>
 	</form>
+
 </div>
 <div class="ichiran_contents ichiran_width">
 	<table class= ichiran_table>
 		@for(i <- range){
-		<form name="syousai" action="@routes.TestController.syousai()" target="iframe" method="POST">
+
 			<tr>
 				@for(str <- show){
 					@if(str == "送信部署"){
@@ -159,14 +208,23 @@
 						<td class="card_title">@gc.get(i).card_title</td>
 					}else{@if(str=="カテゴリ"){
 						<td class="category">@gc.get(i).category_id.category_name</td>
-					}}}}}}}
+					}else{@if(str=="ピックアップ"){
+						<td class="pickup">
+							@if(gc.get(i).cs.contains(nowCS)){
+								<button form="selectForm" type="submit" name="del_pickup" value="@gc.get(i).card_id" >解除</button>
+							}else{
+								<button form="selectForm" type="submit" name="sel_pickup" value="@gc.get(i).card_id" >登録</button>
+							}
+						</td>
+
+					}}}}}}}}
 				}
-			<th><input type="hidden" name="CardNumber" value="@gc.get(i).card_id" /><input type="submit" value="詳細" /></th>
+			<th><form name="syousai" action="@routes.TestController.syousai()" target="iframe" method="POST">
+			<input type="hidden" name="CardNumber" value="@gc.get(i).card_id" /><input type="submit" value="詳細" /></form></th>
 			</tr>
-		</form>
+
 		}
 	</table>
-
 </div>
 <br>
 <div style="text-align: center;">

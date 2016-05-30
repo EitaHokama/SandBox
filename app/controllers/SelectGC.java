@@ -11,6 +11,7 @@ import java.util.Map;
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.ExpressionList;
 
+import models.CaseStudy;
 import models.Category;
 import models.Employees;
 import models.Gratitude_Card;
@@ -32,6 +33,9 @@ public class SelectGC {
 			put("title", "タイトル");
 			put("category", "カテゴリ");
 			put("date_range","日付範囲");
+			put("pickup","すべて");
+			put("selected", "選択");
+			put("removed", "非選択");
 		}
 	};
 
@@ -64,6 +68,7 @@ public class SelectGC {
 		gcWhere=findEmployees(gcWhere,"rec");
 		gcWhere=startDate(gcWhere);
 		gcWhere=endDate(gcWhere);
+		//gcWhere=findCS(gcWhere);
 
 		gc=sortDate(gcWhere);
 
@@ -78,6 +83,7 @@ public class SelectGC {
 		gcWhere=findDepartment(gcWhere,"send");//send or rec
 		gcWhere=findEmployees(gcWhere,"send");
 		gcWhere=gcWhere.eq("receiver_id.name" , emp.name);
+		//gcWhere=findCS(gcWhere);
 		gc=sortDate(gcWhere);
 
 		return gc;
@@ -91,6 +97,7 @@ public class SelectGC {
 		gcWhere=findDepartment(gcWhere,"rec");//send or rec
 		gcWhere=findEmployees(gcWhere,"rec");
 		gcWhere=gcWhere.eq("sender_id.name" , emp.name);
+		//gcWhere=findCS(gcWhere);
 		gc=sortDate(gcWhere);
 
 		return gc;
@@ -110,6 +117,7 @@ public class SelectGC {
 				.where();
 		return gcWhere;
 	}
+
 
 	public List<Gratitude_Card> sortDate(ExpressionList<Gratitude_Card> gc){
 
@@ -241,5 +249,34 @@ public class SelectGC {
 		}
 
 		return st;
+	}
+
+	private ExpressionList<Gratitude_Card> findCS(ExpressionList<Gratitude_Card>gc){
+		if(params.containsKey("pickup")){
+			String pickup = params.get("pickup")[0];
+			if(pickup.equals(name.get("selected"))){
+				gc= gc.eq("cs", CaseStudy.selCase());
+			}else if(pickup.equals(name.get("removed"))){
+				gc= gc.ne("cs", CaseStudy.selCase());
+			}
+		}
+
+		return gc;
+	}
+
+
+ 	public void controlCS(){
+		Gratitude_Card gc;
+
+		int iD;
+		if(params.containsKey("sel_pickup")){
+			iD=Integer.valueOf(params.get("sel_pickup")[0]);
+			gc=Gratitude_Card.find.byId(iD);
+			CaseStudy.setGC(gc);
+		}else if(params.containsKey("del_pickup")){
+			iD=Integer.valueOf(params.get("del_pickup")[0]);
+			gc=Gratitude_Card.find.byId(iD);
+			CaseStudy.delGC(gc);
+		}
 	}
 }
