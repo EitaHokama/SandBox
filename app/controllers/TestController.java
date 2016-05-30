@@ -38,11 +38,30 @@ public class TestController extends Controller {
 
     public Result test2(){
     	List<Gratitude_Card> gc = Gratitude_Card.find.all();
+    	Map map = new HashMap<String, String[]>();
+    	String[] str= {"送信部署"};
+    	//map.put("sender_department", str);
+    	str[0]="送信者";
+		//map.put("sender", str);
+		//str[0]="受信部署";
+		map.put("receiver_department", str);
+		//str[0]="受信者";
+		//map.put("receiver",str);
+		//str[0]="日付";
+		//map.put("date", str);
+		//str[0]="タイトル";
+		//map.put("title", str);
+		//str[0]="カテゴリ";
+		//map.put("category", str);
+		str[0]="日付範囲";
+		//map.put("date_range",str);
+		str[0]="すべて";
+		//map.put("pickup",str);
 
     	//gc= new SelectGC(new HashMap<String, String[]>()).find();
     	gc= Gratitude_Card.find.all();
 
-    	return ok(test2.render(gc, "", new HashMap<String, String[]>()));
+    	return ok(test2.render(gc, "", map));
     }
     public Result test2Post(){
     	List<Gratitude_Card> gc ;

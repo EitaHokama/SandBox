@@ -59,28 +59,35 @@
 
 							<th class="sender"><select name="sender" onChange="this.form.submit()" />
 							<option>@SelectGC.name.get("sender")</option>
-							@if(pos.containsKey("sender_department") && (pos.get("sender_department")(0) != SelectGC.name.get("sender_department"))){
-								@for(dep <- Department.find.all()){
-									@if(dep.department_name == pos.get("sender_department")(0)){
-									<optgroup label="@dep.department_name">
-										@for(emp <- Employees.find.where().eq("department_id", dep).findList()){
-											@if(emp.name == pos.get("sender")(0)){
-												<option selected>@emp.name</option>
-											}else{
-												<option>@emp.name</option>
+							@if(pos.containsKey("sender_department")){
+								if(pos.get("sender_department")(0) != SelectGC.name.get("sender_department")){
+									@for(dep <- Department.find.all()){
+										@if(dep.department_name == pos.get("sender_department")(0)){
+										<optgroup label="@dep.department_name">
+											@for(emp <- Employees.find.where().eq("department_id", dep).findList()){
+												@if(emp.name == pos.get("sender")(0)){
+													<option selected>@emp.name</option>
+												}else{
+													<option>@emp.name</option>
+												}
 											}
+										</optgroup>
 										}
-									</optgroup>
 									}
-
 								}
 							}else{
 								@for(dep <- Department.find.all()){
 									<optgroup label="@dep.department_name">
-										@for(emp <- Employees.find.where().eq("department_id", dep).findList()){
-											@if(emp.name == pos.get("sender")(0)){
-												<option selected>@emp.name</option>
-											}else{
+										@if(pos.contains("sender")){
+											@for(emp <- Employees.find.where().eq("department_id", dep).findList()){
+												@if(emp.name == pos.get("sender")(0)){
+													<option selected>@emp.name</option>
+												}else{
+													<option>@emp.name</option>
+												}
+											}
+										}else{
+											@for(emp <- Employees.find.where().eq("department_id", dep).findList()){
 												<option>@emp.name</option>
 											}
 										}
@@ -111,20 +118,28 @@
 						}else{@if(str == SelectGC.name.get("receiver")){
 							<th class="receiver"><select name="receiver" onChange="this.form.submit()" />
 							<option>@SelectGC.name.get("receiver")</option>
-								@if(pos.containsKey("receiver_department") && (pos.get("receiver_department")(0) != SelectGC.name.get("receiver_department"))){
-								@for(dep <- Department.find.all()){
-									@if(dep.department_name == pos.get("receiver_department")(0)){
-									<optgroup label="@dep.department_name">
-										@for(emp <- Employees.find.where().eq("department_id", dep).findList()){
-											@if(emp.name == pos.get("receiver")(0)){
-												<option selected>@emp.name</option>
+								@if(pos.containsKey("receiver_department")){
+								if(pos.get("receiver_department")(0) != SelectGC.name.get("receiver_department")){
+									@for(dep <- Department.find.all()){
+										@if(dep.department_name == pos.get("receiver_department")(0)){
+										<optgroup label="@dep.department_name">
+											@if(pos.contains("receiver")){
+												@for(emp <- Employees.find.where().eq("department_id", dep).findList()){
+													@if(emp.name == pos.get("receiver")(0)){
+														<option selected>@emp.name</option>
+													}else{
+														<option>@emp.name</option>
+													}
+												}
 											}else{
+												@for(emp <- Employees.find.where().eq("department_id", dep).findList()){
 												<option>@emp.name</option>
+												}
 											}
 										}
-									</optgroup>
+										</optgroup>
+										}
 									}
-
 								}
 							}else{
 								@for(dep <- Department.find.all()){
@@ -133,7 +148,9 @@
 											@if(emp.name == pos.get("receiver")(0)){
 												<option selected>@emp.name</option>
 											}else{
-												<option>@emp.name</option>
+												@for(emp <- Employees.find.where().eq("department_id", dep).findList()){
+													<option>@emp.name</option>
+												}
 											}
 										}
 									</optgroup>
@@ -180,7 +197,7 @@
 								}
 
 							</select></th>
-						}}}}}}}}
+						}}}}}}}
 					}
 			<th><input type="submit" value="更新" /></th>
 			</tr>
