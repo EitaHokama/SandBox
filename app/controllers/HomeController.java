@@ -16,6 +16,7 @@ import play.data.validation.Constraints.Required;
  * This controller contains an action to handle HTTP requests
  * to the application's home page.
  */
+@Security.Authenticated(Secured.class)
 public class HomeController extends Controller {
 
     /**
@@ -27,6 +28,7 @@ public class HomeController extends Controller {
     public Result index() {
         return ok(index.render());
     }
+
     public Result bbs() {
     	//Employees emp = Employees.find.byId(1);
     	Gratitude_Card gc = Gratitude_Card.find.byId(1);
