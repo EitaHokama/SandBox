@@ -37,8 +37,13 @@ public class AuthController extends Controller{
 			//perにユーザーネームと権限データを入れ込んでいる。
 			String per = Employees.find.where().eq("name", login.username).findUnique().permissions;
 
+			if(per == null){
 			TestController test = new TestController();
 			return test.test2();
+			}
+
+			HomeController home = new HomeController();
+			return home.test();
 		}
 	}
 

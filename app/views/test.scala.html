@@ -32,11 +32,11 @@
 		  </tr>
 		</table>
 		}
-		<h2>検索製作中</h2>
-		<form action="@routes.HomeController.createTest()" method="GET">
+		<h2>データ追加</h2>
+		<form action="@routes.HomeController.createTest()" method="POST">
 		  <p>
-		    入力フォーム: <input type="text" Gratitude_Card="Gratitude_Card" />
+		    入力フォーム: <input type="text" name="name" />
 		  </p>
-		  <input type="submit" value="検索" />
+		  <input type="submit" value="Create" />
 		</form>
 	}

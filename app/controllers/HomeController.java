@@ -7,9 +7,11 @@ import models.Gratitude_Card;
 import play.mvc.*;
 import java.util.List;
 import java.util.Map;
+import javax.inject.Inject;
 import views.html.*;
 import java.text.SimpleDateFormat;
 import play.data.Form;
+import play.data.FormFactory;
 import play.data.validation.Constraints.Required;
 
 /**
@@ -18,7 +20,8 @@ import play.data.validation.Constraints.Required;
  */
 @Security.Authenticated(Secured.class)
 public class HomeController extends Controller {
-
+@Inject
+private FormFactory formFactory;
     /**
      * An action that renders an HTML page with a welcome message.
      * The configuration in the <code>routes</code> file means that
@@ -81,10 +84,8 @@ public class HomeController extends Controller {
     }
 
     public Result createTest(){
-    	Map<String,String[]> params = request().body().asFormUrlEncoded();
-    	Gratitude_Card newCard = new Gratitude_Card();
-    	newCard.card_title = params.get("card_title")[0];
-    	newCard.find.all();
+    	Employees emp = formFactory.form(Employees.class).bindFromRequest().get();
+    	emp.save();
     	return redirect(routes.HomeController.test());
     }
 

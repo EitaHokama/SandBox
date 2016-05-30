@@ -34,7 +34,7 @@ GET     /valuation					   controllers.HomeController.valuation()
 
 GET     /typical					   controllers.HomeController.typical()
 
-GET     /test                       controllers.HomeController.createTest()
+POST     /test                       controllers.HomeController.createTest()
 
 GET		/login						controllers.AuthController.index()
 POST    /login						controllers.AuthController.authenticate()
