@@ -38,8 +38,8 @@ public class AuthController extends Controller{
 			String per = Employees.find.where().eq("name", login.username).findUnique().permissions;
 
 			if(per == null){
-			TestController test = new TestController();
-			return test.test2();
+			MailController mail = new MailController();
+			return mail.receive();
 			}
 
 			if(per.equals("人事")){

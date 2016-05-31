@@ -33,11 +33,27 @@ private FormFactory formFactory;
         return ok(index.render());
     }
 
-    public Result bbs() {
+  /*  public Result bbs() {
     	//Employees emp = Employees.find.byId(1);
     	Gratitude_Card gc = Gratitude_Card.find.byId(1);
     	CaseStudy cs = CaseStudy.find.byId(1);
     	return ok(bbs.render(gc,cs));
+    }*/
+    public Result bbs(){
+    	List<Gratitude_Card> gc = Gratitude_Card.find.all();
+    	Map map = new HashMap<String, String[]>();
+    	gc= Gratitude_Card.find.all();
+
+    	return ok(bbs.render(gc, "", map));
+    }
+    public Result bbsPost(){
+    	List<Gratitude_Card> gc ;
+
+    	Map<String, String[]> params =request().body().asFormUrlEncoded();
+    	SelectGC sel = new SelectGC(params);
+    	gc = sel.findBBS();
+
+    	return ok(bbs.render(gc, "",params));
     }
     public Result valuation() {
     	//Employees emp = Employees.find.byId(1);
@@ -57,11 +73,30 @@ private FormFactory formFactory;
     public Result login(){
     	return ok(login.render());
     }
-    public Result typical(){
+    /*public Result typical(){
     	//Employees emp = Employees.find.byId(1);
     	Gratitude_Card gc = Gratitude_Card.find.byId(1);
     	CaseStudy cs = CaseStudy.find.byId(1);
     	return ok(typical.render(gc,cs));
+    }*/
+    public Result typical(){
+    	List<Gratitude_Card> gc = Gratitude_Card.find.all();
+    	Map map = new HashMap<String, String[]>();
+    	gc= Gratitude_Card.find.all();
+    	SelectGC sel = new SelectGC(map);
+    	gc = sel.find();
+
+    	return ok(typical.render(gc, "", map));
+    }
+    public Result typicalPost(){
+    	List<Gratitude_Card> gc ;
+
+    	Map<String, String[]> params =request().body().asFormUrlEncoded();
+    	SelectGC sel = new SelectGC(params);
+    	sel.controlCS();
+    	gc = sel.find();
+
+    	return ok(typical.render(gc, params.get("start_date")[0],params));
     }
 
     public Result creation() {

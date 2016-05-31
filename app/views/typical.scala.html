@@ -1,4 +1,4 @@
-@(gc : Gratitude_Card ,cs : CaseStudy)
+@(gc : List[Gratitude_Card])(par : String)(pos : Map[String,Array[String]])
 
 @busyo = @{models.Department.find.all}
 @cat = @{models.Category.find.all}
@@ -6,151 +6,14 @@
 @import views.html.template._
 
 @onSideMenu("代表的な事例の選択")(""){
+	<link rel="stylesheet" href="@routes.Assets.versioned("/stylesheets/ichiran.css")">
 	}{
-	@cs.gc.get(0).card_title <br>
-	@gc.category_id.gc.get(0).sender_id.name
+			<h2>代表的な事例の選択</h2>
+	<div class= "ichiran_width">
 
+	<form id="selectForm" name="selectForm" action="@routes.HomeController.typicalPost()" method="POST">
 
-
-
-		<h2>代表的な事例の選択</h2>
-		<form name="selection" align="center">
-
-	<table border = "0" align="center">
-		<tr>
-			<td></td>
-			<td>送信部署</td>
-			<td>受信部署</td>
-			<td>開始日</td>
-			<td></td>
-			<td>終了日</td>
-			<td>カテゴリ</td>
-			<td>選択</td>
-		</tr>
-
-		<tr>
-			<td>検索 ： </td>
-		<!-- 送信部署 -->
-			<td>
-				<select name="select">
-					<option value="send_div">-- 送信部署 --
-					@for(b <- busyo){
-						<option> @b.department_name </option>
-					}
-				</select>
-			</td>
-		<!-- 受信部署 -->
-			<td>
-				<select name="select">
-					<option value="res_div">-- 受信部署 --
-					@for(b <- busyo){
-						<option> @b.department_name </option>
-					}
-				</select>
-			</td>
-		<!-- 日付 -->
-			<td>
-				<input type="date" name="date" placeholder="2016-01-01">
-				<td>～</td>
-			</td>
-
-			<td>
-				<input type="date" name="date" placeholder="2016-01-01">
-			</td>
-		<!-- カテゴリ -->
-			<td>
-				<select name="select">
-					<option value="category">-- カテゴリ --
-					 @for(ct <- cat){
-                         	<option > @ct.category_name </option>
-                         }
-				</select>
-			</td>
-		<!-- 選択 -->
-			<td>
-				<select name="select">
-					<option value="all">全て
-				</select>
-			</td>
-		</tr>
-		</table>
-
-		<br>
-
-		<table border=1  height="200" width="700" bgcolor="#ccffcc" align="center" >
-		<tr>
-			<td>送信部署</td>
-			<td>受信部署</td>
-			<td>カテゴリ</td>
-			<td>日付</td>
-			<td>タイトル</td>
-			<td>選択</td>
-		</tr>
-		<tr>
-			<td>開発</td>
-			<td>技術支援</td>
-			<td>デバッグ</td>
-			<td>＃</td>
-			<td>デバッグの協力ありがとうございます。</td>
-			<td><input type="button" value="選択"onClick="OnOff(this);"></td>
-
-			<!-- 選択ボタンを押すと文字が解除になる -->
-			<script type="text/javascript">
-				<!--
-				function OnOff(lol){
-					if (lol.value == "選択") {
-						lol.value = "解除";
-					} else {
-						lol.value = "選択";
-					}
-				}
-				// -->
-			</script>
-
-		</tr>
-		<tr>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td><input type="button" value="選択"onClick="OnOff(this);"></td>
-
-		</tr>
-		<tr>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td><input type="button" value="選択"onClick="OnOff(this);"></td>
-
-		</tr>
-		<tr>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td><input type="button" value="選択"onClick="OnOff(this);"></td>
-
-		</tr>
-				<tr>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td><input type="button" value="選択"onClick="OnOff(this);"></td>
-
-		</tr>
-		</table>
-
-		<br>
-
-		<table border=1 height="200" width="700" bgcolor="#ccffcc"align="center"><tr><td>
-			　　　クリックしたら表示
-		</td></tr></table>
+	@ichiran(gc)(par)("日付範囲" :: "送信部署" ::"受信部署" :: "日付" :: "カテゴリ" :: "タイトル" :: "ピックアップ":: Nil)(pos)
 
 
 	}

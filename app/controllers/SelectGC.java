@@ -34,8 +34,8 @@ public class SelectGC {
 			put("category", "カテゴリ");
 			put("date_range","日付範囲");
 			put("pickup","すべて");
-			put("selected", "選択");
-			put("removed", "非選択");
+			put("selected", "選択済");
+			put("removed", "未選択");
 			put("start_date","");
 			put("end_date","");
 		}
@@ -100,6 +100,21 @@ public class SelectGC {
 		gcWhere=findEmployees(gcWhere,"rec");
 		gcWhere=gcWhere.eq("sender_id.name" , emp.name);
 		//gcWhere=findCS(gcWhere);
+		gc=sortDate(gcWhere);
+
+		return gc;
+	}
+	public List<Gratitude_Card> findBBS(){
+		List<Gratitude_Card> gc;
+		ExpressionList<Gratitude_Card> gcWhere;
+
+		gcWhere=makeWhere();
+		gcWhere=findCategory(gcWhere);
+		gcWhere=findDepartment(gcWhere,"send");//send or rec
+		gcWhere=findDepartment(gcWhere,"rec");
+		gcWhere=findEmployees(gcWhere,"send");
+		gcWhere=findEmployees(gcWhere,"rec");
+
 		gc=sortDate(gcWhere);
 
 		return gc;

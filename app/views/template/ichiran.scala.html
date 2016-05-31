@@ -115,7 +115,7 @@
 					@if(str == "ピックアップ"){
 						<th class="pickup"><select name="pickup" onChange="this.form.submit()" />
 						<option>すべて</optiron>
-							@for(pick <- "選択" :: Nil){ @{/*"非選択" */}
+							@for(pick <- SelectGC.name.get("selected") :: Nil){ @{/*SelectGC.name.get("removed") */}
 								@if(pick == post.get("pickup")){
 									<option selected>@pick</option>
 								}else{

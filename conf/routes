@@ -14,6 +14,7 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 
 GET     /bbs                           controllers.HomeController.bbs
+POST     /bbs                           controllers.HomeController.bbsPost
 
 GET		/test						controllers.HomeController.test()
 
@@ -36,6 +37,7 @@ GET	    /receive					controllers.MailController.receiveGet()
 GET     /valuation					   controllers.HomeController.valuation()
 
 GET     /typical					   controllers.HomeController.typical()
+POST     /typical					   controllers.HomeController.typicalPost()
 
 POST     /test                       controllers.HomeController.createTest()
 
