@@ -14,16 +14,6 @@
 
 
 
-@for(str <- post.keySet()){
-	@str : @post.get(str) <br>
-}
-<br>
-
-
-
-
-
-
 <!-- gc ソート、絞り込み済み感謝カードリスト　par 権限 show　一覧表示項目(左から) -->
 <!--　日付　ソート
 　部署、送信者、カテゴリ　絞り込み-->
@@ -134,12 +124,14 @@
 							}
 					}
 				}
-			<th><input type="submit" value="更新" /></th>
+			<th class="search"><input type="submit" value="更新" /></th>
+
 			</tr>
 		</table>
 	</form>
 
 </div>
+<table class="line"></table>
 <div class="ichiran_contents ichiran_width">
 	<table class= ichiran_table>
 		@for(i <- range){

@@ -48,12 +48,7 @@ public class HomeController extends Controller {
     	CaseStudy cs = CaseStudy.find.byId(1);
     	return ok(test.render(gc,cs));
     }
-    public Result trans(){
-    	//Employees emp = Employees.find.byId(1);
-    	Gratitude_Card gc = Gratitude_Card.find.byId(1);
-    	CaseStudy cs = CaseStudy.find.byId(1);
-    	return ok(trans.render());
-    }
+
     public Result login(){
     	return ok(login.render());
     }
@@ -86,23 +81,6 @@ public class HomeController extends Controller {
     	newCard.find.all();
     	return redirect(routes.HomeController.test());
     }
-    public Result receive(){
-    	List<Gratitude_Card> gc ;
 
-    	Map<String, String[]> params =request().body().asFormUrlEncoded();
-    	SelectGC sel = new SelectGC(params);
-    	gc = sel.findRec(Employees.find.byId(1));//Employeesクラスを代入
-
-    	return ok(receive.render(gc, "",params));
-    }
-    public Result receiveGet(){
-    	List<Gratitude_Card> gc ;
-    	Map<String, String[]> params =new HashMap<String, String[]>();
-
-    	SelectGC sel = new SelectGC(params);
-    	gc = sel.findRec(Employees.find.byId(1));//Employeesクラスを代入
-
-    	return ok(receive.render(gc, "",params));
-    }
 }
 

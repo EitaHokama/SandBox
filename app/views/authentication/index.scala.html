@@ -14,7 +14,7 @@
 <html>
     <body bgcolor="#29454d">
     <div id="form-container">
-   <p  class="form-title"></p>
+
    <div class="circle"><img src="@routes.Assets.versioned("images/Lock.png")" class ="lock"></div>
    @if(loginForm.hasGlobalErrors){
    		<p class = "error">
@@ -22,10 +22,11 @@
    		</p>
    		}
         @form(routes.AuthController.authenticate()) {
-        <a  id="tab"><div id="name" tabindex="1">@inputText(loginForm("username"))</div></a>
-        <a  id="tab"><div id="name" tabindex="2">@inputPassword(loginForm("password"))</div></a>
-
-        <input type="submit"value="Login">
+<div id="login_foam">
+        <a  id="tab">@inputText(loginForm("Username"))</a>
+        <a  id="tab">@inputPassword(loginForm("Password"))</a>
+</div>
+        <input type="submit"value="Login" class="submit-button">
         }
         </div>
     </body>
