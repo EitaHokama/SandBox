@@ -36,6 +36,8 @@ public class SelectGC {
 			put("pickup","すべて");
 			put("selected", "選択");
 			put("removed", "非選択");
+			put("start_date","");
+			put("end_date","");
 		}
 	};
 
@@ -68,7 +70,7 @@ public class SelectGC {
 		gcWhere=findEmployees(gcWhere,"rec");
 		gcWhere=startDate(gcWhere);
 		gcWhere=endDate(gcWhere);
-		//gcWhere=findCS(gcWhere);
+		gcWhere=findCS(gcWhere);
 
 		gc=sortDate(gcWhere);
 
@@ -251,7 +253,7 @@ public class SelectGC {
 		return st;
 	}
 
-	private ExpressionList<Gratitude_Card> findCS(ExpressionList<Gratitude_Card>gc){
+	private ExpressionList<Gratitude_Card> findCS(ExpressionList<Gratitude_Card> gc){
 		if(params.containsKey("pickup")){
 			String pickup = params.get("pickup")[0];
 			if(pickup.equals(name.get("selected"))){
@@ -279,4 +281,18 @@ public class SelectGC {
 			CaseStudy.delGC(gc);
 		}
 	}
+ 	public static Map<String, String> trans(Map<String, String[]> pos){
+ 		Map<String,String> post = new HashMap<>();
+
+ 		for(String str : name.keySet()){
+ 			if(pos.containsKey(str) && (pos.get(str).length != 0)){
+ 				post.put(str, pos.get(str)[0]);
+ 			}else{
+ 				post.put(str , name.get(str));
+ 			}
+ 		}
+
+
+ 		return post;
+ 	}
 }
