@@ -20,6 +20,7 @@ GET		/test						controllers.HomeController.test()
 
 
 GET		/creation						controllers.HomeController.creation()
+POST	/creation						controllers.HomeController.creationPost()
 
 GET		/kanri						controllers.HomeController.kanri()
 
