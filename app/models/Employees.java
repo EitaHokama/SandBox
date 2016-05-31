@@ -38,9 +38,10 @@ public class Employees extends Model {
 	public List<Gratitude_Card> receiver = new ArrayList<>();
 	public static Find<Integer,Employees> find = new Find<Integer,Employees>(){};
 
-	public static Boolean authenticate(String username, String password){
-		Employees employees = Employees.find.where().eq("name",username).findUnique();
-		//return(user != null && employees.pass.equals(password));
-		return true;
-	}
+
+	public static Boolean authenticate(String username, String password) {
+        Employees emp = Employees.find.where().eq("name", username).findUnique();
+        return (emp != null && emp.pass.equals(password));
+    }
+
 }
